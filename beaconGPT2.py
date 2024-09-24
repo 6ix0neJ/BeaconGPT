@@ -12,6 +12,16 @@ if len(sys.argv) < 3:
 
 iface = sys.argv[1]
 ssid_list_file = sys.argv[2]
+banner = """
+  ____                              _____ _____ _______ 
+ |  _ \                            / ____|  __ \__   __|
+ | |_) | ___  __ _  ___ ___  _ __ | |  __| |__) | | |   
+ |  _ < / _ \/ _` |/ __/ _ \| '_ \| | |_ |  ___/  | |   
+ | |_) |  __/ (_| | (_| (_) | | | | |__| | |      | |   
+ |____/ \___|\__,_|\___\___/|_| |_|\_____|_|      |_|     """
+                                                        
+print(banner)                                                        
+
 
 # Validate if the interface exists and is in monitor mode
 if not os.path.exists(f"/sys/class/net/{iface}"):
@@ -38,7 +48,6 @@ except FileNotFoundError:
 
 # Thread control
 stop_event = Event()
-
 
 def beacon_flood_thread(ssids, iface, stop_event):
     # Pre-generate static frame components
