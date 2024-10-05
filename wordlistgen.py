@@ -21,7 +21,8 @@ def generate_ssid(length):
     return ''.join(random.choices(string.ascii_letters + string.digits, k=length))
 
 # Create the wordlist
-output_file = "ssid_wordlist.txt"
+output_file = (input("What would you like to name your wordlist file?: "))
+
 with open(output_file, "w") as f:
     for _ in range(num_ssids):
         ssid_length = random.randint(min_length, max_length)
